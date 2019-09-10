@@ -121,20 +121,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7150ded84b9c144ebcd2cbdcb97f31e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HorizontalSinglePress:
+    UseVariable: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 56239085c6257194296c555c1e5680a6, type: 2}
   HorizontalAxis:
     UseVariable: 1
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 20618bd901b63964292a5d369a4a41a1, type: 2}
+  NonHorizontalAxisEvent: {fileID: 11400000, guid: eb6a62e7e5694774e947359501a75ff2,
+    type: 2}
+  LeftButtonEvent: {fileID: 11400000, guid: 6c1ace6f5985c774cabd1fef3b78b71d, type: 2}
+  RightButtonEvent: {fileID: 11400000, guid: f9072b9b28da94a44bf5162da3ca5fe4, type: 2}
+  VerticalSinglePress:
+    UseVariable: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: bc750f52be36f124ea92cb5f18d5b6d4, type: 2}
   VerticalAxis:
     UseVariable: 1
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 8aa016cf1cb2be64fa4ab51b69fd9642, type: 2}
-  LeftButtonEvent: {fileID: 11400000, guid: 6c1ace6f5985c774cabd1fef3b78b71d, type: 2}
-  RightButtonEvent: {fileID: 11400000, guid: f9072b9b28da94a44bf5162da3ca5fe4, type: 2}
   UpButtonEvent: {fileID: 11400000, guid: c3f55849b88c10341bd160b5aeac7ec6, type: 2}
   DownButtonEvent: {fileID: 11400000, guid: 3d7be2a9898f0fb4c8dbf85ec2459867, type: 2}
-  NonHorizontalAxisEvent: {fileID: 11400000, guid: eb6a62e7e5694774e947359501a75ff2,
-    type: 2}
   NonVerticalAxisEvent: {fileID: 11400000, guid: 5f9cf441191c92c44a5b5fdfb1ee67f3,
     type: 2}
   StartButtonEvent: {fileID: 11400000, guid: cc1fb3491f60c914abf70d15a244d3e2, type: 2}

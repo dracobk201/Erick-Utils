@@ -5,25 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class ControllerHandler : MonoBehaviour
 {
-   
+    #region Directional buttons
     [Header("Directional Buttons Variables")]
+    [SerializeField]
+    private BoolReference HorizontalSinglePress;
     [SerializeField]
     private FloatReference HorizontalAxis;
     [SerializeField]
-    private FloatReference VerticalAxis;
+    private GameEvent NonHorizontalAxisEvent;
     [SerializeField]
     private GameEvent LeftButtonEvent;
     [SerializeField]
     private GameEvent RightButtonEvent;
+    private bool isHorizontalAxisInUse = false;
+
+    [SerializeField]
+    private BoolReference VerticalSinglePress;
+    [SerializeField]
+    private FloatReference VerticalAxis;
     [SerializeField]
     private GameEvent UpButtonEvent;
     [SerializeField]
     private GameEvent DownButtonEvent;
     [SerializeField]
-    private GameEvent NonHorizontalAxisEvent;
-    [SerializeField]
     private GameEvent NonVerticalAxisEvent;
+    private bool isVerticalAxisInUse = false;
+    #endregion
 
+    #region Action Buttons
     [Header("Action Buttons Variables")]
     [SerializeField]
     private GameEvent StartButtonEvent;
@@ -32,15 +41,16 @@ public class ControllerHandler : MonoBehaviour
     [SerializeField]
     private GameEvent XButtonEvent;
 
+    private bool isStartAxisInUse = false;
+    private bool isSquareAxisInUse = false;
+    private bool isXAxisInUse = false;
+    #endregion
+
     [Header("UI Active Variables")]
     [SerializeField]
     private BoolReference UIPanelActive;
     [SerializeField]
     private GameEvent UIChangeEvent;
-
-    private bool isStartAxisInUse = false;
-    private bool isFireAxisInUse = false;
-    private bool isJumpAxisInUse = false;
 
     private void Update()
     {
@@ -53,42 +63,87 @@ public class ControllerHandler : MonoBehaviour
 
     private void CheckingHorizontalAxis()
     {
-        if (Input.GetAxisRaw(Global.HorizontalAxis) < 0)
+        if (HorizontalSinglePress.Value)
         {
-            HorizontalAxis.Value = -1;
-            LeftButtonEvent.Raise();
-        }
-        else if (Input.GetAxisRaw(Global.HorizontalAxis) > 0)
-        {
-            HorizontalAxis.Value = 1;
-            RightButtonEvent.Raise();
+            if (Input.GetAxisRaw(Global.HorizontalAxis) < 0 && !isHorizontalAxisInUse)
+            {
+                HorizontalAxis.Value = -1;
+                isHorizontalAxisInUse = true;
+                LeftButtonEvent.Raise();
+            }
+            else if (Input.GetAxisRaw(Global.HorizontalAxis) > 0 && !isHorizontalAxisInUse)
+            {
+                HorizontalAxis.Value = 1;
+                isHorizontalAxisInUse = true;
+                RightButtonEvent.Raise();
+            }
+            else if (Input.GetAxisRaw(Global.HorizontalAxis) == 0)
+            {
+                HorizontalAxis.Value = 0;
+                isHorizontalAxisInUse = false;
+                NonHorizontalAxisEvent.Raise();
+            }
         }
         else
         {
-            HorizontalAxis.Value = 0;
-            NonHorizontalAxisEvent.Raise();
+            if (Input.GetAxisRaw(Global.HorizontalAxis) < 0)
+            {
+                HorizontalAxis.Value = -1;
+                LeftButtonEvent.Raise();
+            }
+            else if (Input.GetAxisRaw(Global.HorizontalAxis) > 0)
+            {
+                HorizontalAxis.Value = 1;
+                RightButtonEvent.Raise();
+            }
+            else
+            {
+                HorizontalAxis.Value = 0;
+                NonHorizontalAxisEvent.Raise();
+            }
         }
-        
     }
 
     private void CheckingVerticalAxis()
     {
-        if (Input.GetAxisRaw(Global.VerticalAxis) < 0)
+        if (VerticalSinglePress.Value)
         {
-            VerticalAxis.Value = -1;
-            DownButtonEvent.Raise();
-            CheckChangeButtonUI();
-        }
-        else if (Input.GetAxisRaw(Global.VerticalAxis) > 0)
-        {
-            VerticalAxis.Value = 1;
-            UpButtonEvent.Raise();
-            CheckChangeButtonUI();
+            if (Input.GetAxisRaw(Global.VerticalAxis) < 0 && !isVerticalAxisInUse)
+            {
+                VerticalAxis.Value = -1;
+                isVerticalAxisInUse = true;
+                DownButtonEvent.Raise();
+            }
+            else if (Input.GetAxisRaw(Global.VerticalAxis) > 0 && !isVerticalAxisInUse)
+            {
+                VerticalAxis.Value = 1;
+                isVerticalAxisInUse = true;
+                UpButtonEvent.Raise();
+            }
+            else if (Input.GetAxisRaw(Global.VerticalAxis) == 0)
+            {
+                VerticalAxis.Value = 0;
+                isVerticalAxisInUse = false;
+                NonVerticalAxisEvent.Raise();
+            }
         }
         else
         {
-            VerticalAxis.Value = 0;
-            NonVerticalAxisEvent.Raise();
+            if (Input.GetAxisRaw(Global.VerticalAxis) < 0)
+            {
+                VerticalAxis.Value = -1;
+                DownButtonEvent.Raise();
+            }
+            else if (Input.GetAxisRaw(Global.VerticalAxis) > 0)
+            {
+                VerticalAxis.Value = 1;
+                UpButtonEvent.Raise();
+            }
+            else
+            {
+                VerticalAxis.Value = 0;
+                NonVerticalAxisEvent.Raise();
+            }
         }
     }
 
@@ -96,7 +151,6 @@ public class ControllerHandler : MonoBehaviour
     {
         if (Input.GetAxisRaw(Global.StartAxis) != 0 && !isStartAxisInUse)
         {
-            //Debug.Log("Pausé");
             StartButtonEvent.Raise();
             isStartAxisInUse = true;
         }
@@ -108,29 +162,27 @@ public class ControllerHandler : MonoBehaviour
 
     private void CheckingSquareButton()
     {
-        if (Input.GetAxisRaw(Global.FireAxis) != 0 && !isFireAxisInUse)
+        if (Input.GetAxisRaw(Global.FireAxis) != 0 && !isSquareAxisInUse)
         {
-            //Debug.Log("Disparé");
             SquareButtonEvent.Raise();
-            isFireAxisInUse = true;
+            isSquareAxisInUse = true;
         }
         else if (Input.GetAxisRaw(Global.FireAxis) == 0)
         {
-            isFireAxisInUse = false;
+            isSquareAxisInUse = false;
         }
     }
 
     private void CheckingXButton()
     {
-        if (Input.GetAxisRaw(Global.JumpAxis) != 0 && !isJumpAxisInUse)
+        if (Input.GetAxisRaw(Global.JumpAxis) != 0 && !isXAxisInUse)
         {
-            //Debug.Log("Salté");
             XButtonEvent.Raise();
-            isJumpAxisInUse = true;
+            isXAxisInUse = true;
         }
         else if (Input.GetAxisRaw(Global.JumpAxis) == 0)
         {
-            isJumpAxisInUse = false;
+            isXAxisInUse = false;
         }
     }
 
