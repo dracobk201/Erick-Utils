@@ -47,7 +47,7 @@ public class PauseActions : MonoBehaviour
 
     public void RestartButtonPressed()
     {
-        SceneToChange.Value = Global.FirstLevelScene;
+        SceneToChange.Value = Global.FIRSTLEVELSCENE;
         ChangeSceneEvent.Raise();
     }
 
@@ -58,7 +58,7 @@ public class PauseActions : MonoBehaviour
 
     public void QuitButtonPressed()
     {
-        SceneToChange.Value = Global.MainMenuScene;
+        SceneToChange.Value = Global.MAINMENUSCENE;
         ChangeSceneEvent.Raise();
     }
 }

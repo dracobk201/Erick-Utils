@@ -3,22 +3,21 @@
 public static class Global
 {
     #region Tags
-    public const string ItemTag = "Item";
-    public const string PlanetTag = "Planet";
-    public const string TrashTag = "Trash";
+    public const string PLAYERTAG = "Player";
+    public const string ENEMYTAG = "Enemy";
     #endregion
 
     #region Axis
-    public const string HorizontalAxis = "Horizontal";
-    public const string VerticalAxis = "Vertical";
-    public const string JumpAxis = "Jump";
-    public const string StartAxis = "Cancel";
-    public const string FireAxis = "Fire1";
+    public const string HORIZONTALAXIS = "Horizontal";
+    public const string VERTICALAXIS = "Vertical";
+    public const string JUMPAXIS = "Jump";
+    public const string STARTAXIS = "Cancel";
+    public const string FIREAXIS = "Fire1";
     #endregion
 
     #region Scene Names
-    public const string MainMenuScene = "Main Menu";
-    public const string FirstLevelScene = "Game";
+    public const string MAINMENUSCENE = "Main Menu";
+    public const string FIRSTLEVELSCENE = "Game";
     #endregion
 
     #region Animations

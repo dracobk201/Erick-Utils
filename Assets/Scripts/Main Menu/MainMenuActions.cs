@@ -10,7 +10,7 @@ public class MainMenuActions : MonoBehaviour
 
     public void StartLevel()
     {
-        SceneToChange.Value = Global.FirstLevelScene;
+        SceneToChange.Value = Global.FIRSTLEVELSCENE;
         ChangeSceneEvent.Raise();
     }
 

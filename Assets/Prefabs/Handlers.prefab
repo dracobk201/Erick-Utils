@@ -145,6 +145,14 @@ MonoBehaviour:
   DownButtonEvent: {fileID: 11400000, guid: 3d7be2a9898f0fb4c8dbf85ec2459867, type: 2}
   NonVerticalAxisEvent: {fileID: 11400000, guid: 5f9cf441191c92c44a5b5fdfb1ee67f3,
     type: 2}
+  MaxSwipeTime:
+    UseVariable: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 3206dc5dacd619346a38e9b0caee969a, type: 2}
+  MinSwipeDistance:
+    UseVariable: 1
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: c9b018d6fcbaa0f4b916d797936b22c9, type: 2}
   StartButtonEvent: {fileID: 11400000, guid: cc1fb3491f60c914abf70d15a244d3e2, type: 2}
   SquareButtonEvent: {fileID: 11400000, guid: bdff2087299eb204aaa98196d178e0cd, type: 2}
   XButtonEvent: {fileID: 11400000, guid: 9d8c3c5206346104d9a1dee5ceaab4d5, type: 2}

@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class ControllerHandler : MonoBehaviour
@@ -30,6 +32,18 @@ public class ControllerHandler : MonoBehaviour
     [SerializeField]
     private GameEvent NonVerticalAxisEvent;
     private bool isVerticalAxisInUse = false;
+
+    [Header("Touch Variables")]
+    [SerializeField]
+    private FloatReference MaxSwipeTime;
+    [SerializeField]
+    private FloatReference MinSwipeDistance;
+    private Touch touch;
+    private float swipeStartTime;
+    private bool couldBeSwipe;
+    private Vector2 startPos;
+    private int stationaryForFrames;
+    private TouchPhase lastPhase;
     #endregion
 
     #region Action Buttons
@@ -52,6 +66,11 @@ public class ControllerHandler : MonoBehaviour
     [SerializeField]
     private GameEvent UIChangeEvent;
 
+    private void Start()
+    {
+        StartCoroutine(CheckSwipes());
+    }
+
     private void Update()
     {
         CheckingVerticalAxis();
@@ -61,100 +80,202 @@ public class ControllerHandler : MonoBehaviour
         CheckingXButton();
     }
 
-    private void CheckingHorizontalAxis()
+    #region Touch Functions
+    public IEnumerator CheckSwipes()
     {
-        if (HorizontalSinglePress.Value)
-        {
-            if (Input.GetAxisRaw(Global.HorizontalAxis) < 0 && !isHorizontalAxisInUse)
-            {
-                HorizontalAxis.Value = -1;
-                isHorizontalAxisInUse = true;
-                LeftButtonEvent.Raise();
+        while (true)
+        {                                                                   //Hago este Loop para que lo haga infinitamente
+            foreach (Touch touch in Input.touches)
+            {                                   //Por cada toque en el Input.touches, ya que es un arreglo
+                switch (touch.phase)
+                {
+                    case TouchPhase.Began:
+                        couldBeSwipe = true;
+                        startPos = touch.position;
+                        swipeStartTime = Time.time;
+                        stationaryForFrames = 0;
+                        break;
+                    case TouchPhase.Stationary:
+                        if (IsContinouslyStationary(frames: 8))
+                        {
+                            couldBeSwipe = false;
+                            NoHorizontalActions();
+                            NoVerticalActions();
+                        }
+                        break;
+                    case TouchPhase.Ended:
+                        if (IsASwipeHorizontal(touch))
+                        {
+                            couldBeSwipe = false;
+                            if (Mathf.Sign(touch.position.x - startPos.x) == 1f)
+                            {
+                                RightDirectionActions();
+                            }
+                            else if (Mathf.Sign(touch.position.x - startPos.x) != 1f)
+                            {
+                                LeftDirectionActions();
+                            }
+                        }
+                        else if (IsASwipeVertical(touch))
+                        {
+                            couldBeSwipe = false;                                   //Ya terminó el swipe
+                            if (Mathf.Sign(touch.position.y - startPos.y) == 1f)
+                            {
+                                UpDirectionActions();
+                            }
+                            else
+                            {
+                                DownDirectionActions();
+                            }
+                        }
+                        else
+                        {                                                               //Si son sólo toques para la UI
+                            PointerEventData ped = new PointerEventData(EventSystem.current);   //Se crea el PointerEventData
+                            ped.position = touch.position;                                      //Se obtiene la posición del dedo
+                            List<RaycastResult> hits = new List<RaycastResult>();               //Crear una lista vacia en donde se guardaran los resultados del Raycast
+                            EventSystem.current.RaycastAll(ped, hits);                          //Checkea los rayos y los guarda en la lista
+                            foreach (RaycastResult r in hits)
+                            {
+                                //if (SceneManager.GetActiveScene().name != GlobalVariables.MainMenuSceneName)
+                                //{
+                                //    if (r.gameObject.name == "Pause")
+                                //    {
+                                //        GameMaster.instance.isPaused = !GameMaster.instance.isPaused;
+                                //    }
+                                //    else
+                                //    {
+                                //        player.GetComponent<PlayerController>().ControllerAnimation(r.gameObject.name);
+                                //    }
+                                //}
+                            }
+                        }
+                        break;
+                }
+                lastPhase = touch.phase;
             }
-            else if (Input.GetAxisRaw(Global.HorizontalAxis) > 0 && !isHorizontalAxisInUse)
-            {
-                HorizontalAxis.Value = 1;
-                isHorizontalAxisInUse = true;
-                RightButtonEvent.Raise();
-            }
-            else if (Input.GetAxisRaw(Global.HorizontalAxis) == 0)
-            {
-                HorizontalAxis.Value = 0;
-                isHorizontalAxisInUse = false;
-                NonHorizontalAxisEvent.Raise();
-            }
-        }
-        else
-        {
-            if (Input.GetAxisRaw(Global.HorizontalAxis) < 0)
-            {
-                HorizontalAxis.Value = -1;
-                LeftButtonEvent.Raise();
-            }
-            else if (Input.GetAxisRaw(Global.HorizontalAxis) > 0)
-            {
-                HorizontalAxis.Value = 1;
-                RightButtonEvent.Raise();
-            }
-            else
-            {
-                HorizontalAxis.Value = 0;
-                NonHorizontalAxisEvent.Raise();
-            }
+            yield return null;
         }
     }
 
-    private void CheckingVerticalAxis()
+    private bool IsContinouslyStationary(int frames)
     {
-        if (VerticalSinglePress.Value)
-        {
-            if (Input.GetAxisRaw(Global.VerticalAxis) < 0 && !isVerticalAxisInUse)
-            {
-                VerticalAxis.Value = -1;
-                isVerticalAxisInUse = true;
-                DownButtonEvent.Raise();
-            }
-            else if (Input.GetAxisRaw(Global.VerticalAxis) > 0 && !isVerticalAxisInUse)
-            {
-                VerticalAxis.Value = 1;
-                isVerticalAxisInUse = true;
-                UpButtonEvent.Raise();
-            }
-            else if (Input.GetAxisRaw(Global.VerticalAxis) == 0)
-            {
-                VerticalAxis.Value = 0;
-                isVerticalAxisInUse = false;
-                NonVerticalAxisEvent.Raise();
-            }
-        }
+        if (lastPhase == TouchPhase.Stationary)
+            stationaryForFrames++;
         else
+            stationaryForFrames = 1;
+        return stationaryForFrames > frames;
+    }
+
+    private bool IsASwipeHorizontal(Touch touch)
+    {
+        float swipeTime = Time.time - swipeStartTime;
+        float swipeDistx = Mathf.Abs(touch.position.x - startPos.x);
+        return couldBeSwipe && swipeTime < MaxSwipeTime.Value && swipeDistx > MinSwipeDistance.Value;
+    }
+
+    private bool IsASwipeVertical(Touch touch)
+    {
+        float swipeTime = Time.time - swipeStartTime;
+        float swipeDist = Mathf.Abs(touch.position.y - startPos.y);
+        return couldBeSwipe && swipeTime < MaxSwipeTime.Value && swipeDist > MinSwipeDistance.Value;
+    }
+    #endregion
+
+    #region Horizontal Functions
+
+    private void CheckingHorizontalAxis()
+    {
+        if (Input.GetAxisRaw(Global.HORIZONTALAXIS) < 0 && !isHorizontalAxisInUse)
         {
-            if (Input.GetAxisRaw(Global.VerticalAxis) < 0)
-            {
-                VerticalAxis.Value = -1;
-                DownButtonEvent.Raise();
-            }
-            else if (Input.GetAxisRaw(Global.VerticalAxis) > 0)
-            {
-                VerticalAxis.Value = 1;
-                UpButtonEvent.Raise();
-            }
-            else
-            {
-                VerticalAxis.Value = 0;
-                NonVerticalAxisEvent.Raise();
-            }
+            LeftDirectionActions();
+        }
+        else if (Input.GetAxisRaw(Global.HORIZONTALAXIS) > 0 && !isHorizontalAxisInUse)
+        {
+            RightDirectionActions();
+        }
+        else if (Input.GetAxisRaw(Global.HORIZONTALAXIS) == 0)
+        {
+            NoHorizontalActions();
         }
     }
+
+    private void NoHorizontalActions()
+    {
+        HorizontalAxis.Value = 0;
+        if (HorizontalSinglePress.Value)
+            isHorizontalAxisInUse = false;
+        NonHorizontalAxisEvent.Raise();
+    }
+
+    private void RightDirectionActions()
+    {
+        HorizontalAxis.Value = 1;
+        if (HorizontalSinglePress.Value)
+            isHorizontalAxisInUse = true;
+        RightButtonEvent.Raise();
+    }
+
+    private void LeftDirectionActions()
+    {
+        HorizontalAxis.Value = -1;
+        if (HorizontalSinglePress.Value)
+            isHorizontalAxisInUse = true;
+        LeftButtonEvent.Raise();
+    }
+
+    #endregion
+
+    #region Vertical Functions
+    private void CheckingVerticalAxis()
+    {
+        if (Input.GetAxisRaw(Global.VERTICALAXIS) < 0 && !isVerticalAxisInUse)
+        {
+            DownDirectionActions();
+        }
+        else if (Input.GetAxisRaw(Global.VERTICALAXIS) > 0 && !isVerticalAxisInUse)
+        {
+            UpDirectionActions();
+        }
+        else if (Input.GetAxisRaw(Global.VERTICALAXIS) == 0)
+        {
+            NoVerticalActions();
+        }
+    }
+
+    private void NoVerticalActions()
+    {
+        VerticalAxis.Value = 0;
+        if (VerticalSinglePress.Value)
+            isVerticalAxisInUse = false;
+        NonVerticalAxisEvent.Raise();
+    }
+
+    private void UpDirectionActions()
+    {
+        VerticalAxis.Value = 1;
+        if (VerticalSinglePress.Value)
+            isVerticalAxisInUse = true;
+        UpButtonEvent.Raise();
+    }
+
+    private void DownDirectionActions()
+    {
+        VerticalAxis.Value = -1;
+        if (VerticalSinglePress.Value)
+            isVerticalAxisInUse = true;
+        DownButtonEvent.Raise();
+    }
+
+    #endregion
 
     private void CheckingStartButton()
     {
-        if (Input.GetAxisRaw(Global.StartAxis) != 0 && !isStartAxisInUse)
+        if (Input.GetAxisRaw(Global.STARTAXIS) != 0 && !isStartAxisInUse)
         {
             StartButtonEvent.Raise();
             isStartAxisInUse = true;
         }
-        else if (Input.GetAxisRaw(Global.StartAxis) == 0)
+        else if (Input.GetAxisRaw(Global.STARTAXIS) == 0)
         {
             isStartAxisInUse = false;
         }
@@ -162,12 +283,12 @@ public class ControllerHandler : MonoBehaviour
 
     private void CheckingSquareButton()
     {
-        if (Input.GetAxisRaw(Global.FireAxis) != 0 && !isSquareAxisInUse)
+        if (Input.GetAxisRaw(Global.FIREAXIS) != 0 && !isSquareAxisInUse)
         {
             SquareButtonEvent.Raise();
             isSquareAxisInUse = true;
         }
-        else if (Input.GetAxisRaw(Global.FireAxis) == 0)
+        else if (Input.GetAxisRaw(Global.FIREAXIS) == 0)
         {
             isSquareAxisInUse = false;
         }
@@ -175,12 +296,12 @@ public class ControllerHandler : MonoBehaviour
 
     private void CheckingXButton()
     {
-        if (Input.GetAxisRaw(Global.JumpAxis) != 0 && !isXAxisInUse)
+        if (Input.GetAxisRaw(Global.JUMPAXIS) != 0 && !isXAxisInUse)
         {
             XButtonEvent.Raise();
             isXAxisInUse = true;
         }
-        else if (Input.GetAxisRaw(Global.JumpAxis) == 0)
+        else if (Input.GetAxisRaw(Global.JUMPAXIS) == 0)
         {
             isXAxisInUse = false;
         }
