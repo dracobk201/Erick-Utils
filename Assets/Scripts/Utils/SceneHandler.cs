@@ -1,51 +1,42 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour
 {
     [Header("Data Variables")]
-    [SerializeField] private StringReference SceneToChange;
-    [SerializeField] private GameEvent ShowSceneLoading;
+    [SerializeField]
+    private StringReference SceneToChange;
+    [SerializeField]
+    private GameEvent ShowSceneLoading;
 
     [Header("Script Variables")]
     private bool isChangingSceneNow;
-    private float SceneChangingProgress;
+    private float sceneChangingProgress;
 
     private AsyncOperation sceneProgress;
 
     public void SwitchScene()
     {
-        StartCoroutine(ChangingScene());
+        sceneProgress = SceneManager.LoadSceneAsync(SceneToChange.Value, LoadSceneMode.Single);
+        isChangingSceneNow = true;
+        ShowSceneLoading.Raise();
     }
 
-    private IEnumerator ChangingScene()
+    private void Update()
     {
-        if (SceneManager.GetActiveScene().name.Equals(SceneToChange.Value))
+        if (isChangingSceneNow)
         {
-            SceneManager.LoadScene(SceneToChange.Value);
+            if (sceneProgress.isDone)
+                Hide();
         }
-        else
-        {
-            ShowSceneLoading.Raise();
-            yield return new WaitForSeconds(0.2f);
+    }
 
-            sceneProgress = SceneManager.LoadSceneAsync(SceneToChange.Value, LoadSceneMode.Single);
-            sceneProgress.allowSceneActivation = false;
-
-            while (!sceneProgress.isDone)
-            {
-                SceneChangingProgress = sceneProgress.progress;
-                if (sceneProgress.progress >= 0.9f)
-                {
-                    ShowSceneLoading.Raise();
-
-                    SceneChangingProgress = 0;
-                    sceneProgress.allowSceneActivation = true;
-                }
-                yield return null;
-            }
-        }
+    public void Hide()
+    {
+        ShowSceneLoading.Raise();
+        sceneProgress.allowSceneActivation = true;
+        sceneProgress = null;
+        isChangingSceneNow = false;
     }
 }
