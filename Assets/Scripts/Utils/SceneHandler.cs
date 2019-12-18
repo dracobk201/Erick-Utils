@@ -8,18 +8,20 @@ public class SceneHandler : MonoBehaviour
     [SerializeField]
     private StringReference SceneToChange;
     [SerializeField]
+    private FloatReference SceneChangeProgress;
+    [SerializeField]
+    private FloatReference SceneChangeDelay;
+    [SerializeField]
     private GameEvent ShowSceneLoading;
 
-    [Header("Script Variables")]
     private bool isChangingSceneNow;
-    private float sceneChangingProgress;
-
-    private AsyncOperation sceneProgress;
+    private AsyncOperation sceneOperation;
 
     public void SwitchScene()
     {
-        sceneProgress = SceneManager.LoadSceneAsync(SceneToChange.Value, LoadSceneMode.Single);
+        sceneOperation = SceneManager.LoadSceneAsync(SceneToChange.Value, LoadSceneMode.Single);
         isChangingSceneNow = true;
+        sceneOperation.allowSceneActivation = false;
         ShowSceneLoading.Raise();
     }
 
@@ -27,16 +29,20 @@ public class SceneHandler : MonoBehaviour
     {
         if (isChangingSceneNow)
         {
-            if (sceneProgress.isDone)
-                Hide();
+            SceneChangeProgress.Value = sceneOperation.progress;
+            if (sceneOperation.progress >= 0.9f)
+            {
+                isChangingSceneNow = false;
+                StartCoroutine(HideOldScene());
+            }
         }
     }
 
-    public void Hide()
+    private IEnumerator HideOldScene()
     {
-        ShowSceneLoading.Raise();
-        sceneProgress.allowSceneActivation = true;
-        sceneProgress = null;
-        isChangingSceneNow = false;
+        yield return new WaitForSecondsRealtime(SceneChangeDelay.Value);
+        sceneOperation.allowSceneActivation = true;
+        //ShowSceneLoading.Raise();
+        sceneOperation = null;
     }
 }
