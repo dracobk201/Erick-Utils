@@ -96,11 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87909fc51e0e8bb45aca679317e1e7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraSmoothSpeed:
-    UseVariable: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: cfee6bd31cde8644cad861d48eab656d, type: 2}
-  Offset:
-    UseVariable: 1
-    ConstantValue: {x: 0, y: 0, z: 0}
-    Variable: {fileID: 11400000, guid: 51ef7d8f97736d046b5a91ef3f192f76, type: 2}
+  cameraSmoothSpeed:
+    useVariable: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: cfee6bd31cde8644cad861d48eab656d, type: 2}
+  offset:
+    useVariable: 1
+    constantValue: {x: 0, y: 0, z: 0}
+    variable: {fileID: 11400000, guid: 51ef7d8f97736d046b5a91ef3f192f76, type: 2}

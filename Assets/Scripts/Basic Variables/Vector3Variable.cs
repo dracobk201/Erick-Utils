@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Basic Variable/Vector3")]
-public class Vector3Variable : ScriptableObject
+namespace Basic_Variables
 {
-    public Vector3 Value;
-    [TextArea]
-    public string Description;
-
-    public void SetValue(Vector3 value)
+    [CreateAssetMenu(menuName = "Basic Variable/Vector3")]
+    public class Vector3Variable : ScriptableObject
     {
-        Value = value;
-    }
+        public Vector3 value;
+        [TextArea] public string description;
 
+        public void SetValue(Vector3 newValue)
+        {
+            value = newValue;
+        }
+    }
 }

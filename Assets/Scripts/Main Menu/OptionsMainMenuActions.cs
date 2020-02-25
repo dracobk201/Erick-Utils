@@ -1,33 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Basic_Variables;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionsMainMenuActions : MonoBehaviour
+namespace Main_Menu
 {
-    [Header("Data Variables")]
-    public FloatReference MusicVolume;
-    public FloatReference SoundVolume;
-
-    [Header("Panel Variables")]
-    public Slider soundSlider;
-    public Slider musicSlider;
-
-    public void Start()
+    public class OptionsMainMenuActions : MonoBehaviour
     {
-        soundSlider.onValueChanged.AddListener(delegate { SoundChanged(); });
-        soundSlider.value = SoundVolume.Value;
-        musicSlider.onValueChanged.AddListener(delegate { MusicChanged(); });
-        musicSlider.value = MusicVolume.Value;
-    }
+        [Header("Data Variables")]
+        public FloatReference musicVolume;
+        public FloatReference soundVolume;
 
-    public void SoundChanged()
-    {
-        SoundVolume.Value = soundSlider.value;
-    }
+        [Header("Panel Variables")]
+        public Slider soundSlider;
+        public Slider musicSlider;
 
-    public void MusicChanged()
-    {
-        MusicVolume.Value = musicSlider.value;
+        public void Start()
+        {
+            soundSlider.onValueChanged.AddListener(delegate { SoundChanged(); });
+            soundSlider.value = soundVolume.Value;
+            musicSlider.onValueChanged.AddListener(delegate { MusicChanged(); });
+            musicSlider.value = musicVolume.Value;
+        }
+
+        public void SoundChanged()
+        {
+            soundVolume.Value = soundSlider.value;
+        }
+
+        public void MusicChanged()
+        {
+            musicVolume.Value = musicSlider.value;
+        }
     }
 }

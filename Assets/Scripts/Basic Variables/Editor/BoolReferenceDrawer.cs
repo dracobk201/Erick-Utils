@@ -1,63 +1,54 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(BoolReference))]
-public class BoolReferenceDrawer : PropertyDrawer
+namespace Basic_Variables.Editor
 {
-    private int selected;
-
-    private void OnEnable()
+    [CustomPropertyDrawer(typeof(BoolReference))]
+    public class BoolReferenceDrawer : PropertyDrawer
     {
-        selected = 0;
-    }
+        private int selected;
 
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-    {
-        // Using BeginProperty / EndProperty on the parent property means that
-        // prefab override logic works on the entire property.
-        EditorGUI.BeginProperty(position, label, property);
-
-        // Draw label
-        position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
-
-        // Don't make child fields be indented
-        var indent = EditorGUI.indentLevel;
-        EditorGUI.indentLevel = 0;
-
-        GUIStyle popupStyle;
-        popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions"));
-        popupStyle.imagePosition = ImagePosition.ImageOnly;
-
-        // Calculate rect for configuration button
-        Rect buttonRect = new Rect(position);
-        buttonRect.yMin += popupStyle.margin.top;
-        buttonRect.width = popupStyle.fixedWidth + popupStyle.margin.right;
-        position.xMin = buttonRect.xMax;
-
-        // Draw fields - passs GUIContent.none to each so they are drawn without labels
-
-
-        string[] options = new string[]
+        private void OnEnable()
         {
-            "Var", "Cons"
-        };
-
-        selected = EditorGUI.Popup(buttonRect, selected, options, popupStyle);
-
-        if (selected == 0)
-        {
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("Variable"), GUIContent.none);
-            property.FindPropertyRelative("UseVariable").boolValue = true;
-        }
-        else
-        {
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("ConstantValue"), GUIContent.none);
-            property.FindPropertyRelative("UseVariable").boolValue = false;
+            selected = 0;
         }
 
-        // Set indent back to what it was
-        EditorGUI.indentLevel = indent;
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            EditorGUI.BeginProperty(position, label, property);
 
-        EditorGUI.EndProperty();
+            position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
+
+            var indent = EditorGUI.indentLevel;
+            EditorGUI.indentLevel = 0;
+
+            var popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions")) {imagePosition = ImagePosition.ImageOnly};
+
+            var buttonRect = new Rect(position);
+            buttonRect.yMin += popupStyle.margin.top;
+            buttonRect.width = popupStyle.fixedWidth + popupStyle.margin.right;
+            position.xMin = buttonRect.xMax;
+
+            var options = new string[]
+            {
+                "Var", "Cons"
+            };
+
+            selected = EditorGUI.Popup(buttonRect, selected, options, popupStyle);
+
+            if (selected == 0)
+            {
+                EditorGUI.PropertyField(position, property.FindPropertyRelative("variable"), GUIContent.none);
+                property.FindPropertyRelative("useVariable").boolValue = true;
+            }
+            else
+            {
+                EditorGUI.PropertyField(position, property.FindPropertyRelative("constantValue"), GUIContent.none);
+                property.FindPropertyRelative("useVariable").boolValue = false;
+            }
+
+            EditorGUI.indentLevel = indent;
+            EditorGUI.EndProperty();
+        }
     }
 }

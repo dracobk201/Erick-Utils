@@ -44,19 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2220ee9880a769a4d8d77146e1c8494c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToChange:
-    UseVariable: 1
-    ConstantValue: 
-    Variable: {fileID: 11400000, guid: cb29a0fa181671a42a993fe22400a53a, type: 2}
-  SceneChangeProgress:
-    UseVariable: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 964c8532a23d3dc41a94775d7a335956, type: 2}
-  SceneChangeDelay:
-    UseVariable: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 7c1c397fd48d698418d49f5247b24dea, type: 2}
-  ShowSceneLoading: {fileID: 11400000, guid: babf76c2d766018429750aa7f14dcd8a, type: 2}
+  sceneToChange:
+    useVariable: 1
+    constantValue: 
+    variable: {fileID: 11400000, guid: cb29a0fa181671a42a993fe22400a53a, type: 2}
+  sceneChangeProgress:
+    useVariable: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 964c8532a23d3dc41a94775d7a335956, type: 2}
+  sceneChangeDelay:
+    useVariable: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 7c1c397fd48d698418d49f5247b24dea, type: 2}
+  showSceneLoading: {fileID: 11400000, guid: babf76c2d766018429750aa7f14dcd8a, type: 2}
 --- !u!114 &2626497924740658127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,8 +69,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a18e8d76b6b3f54f94b92fae64ef79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 1858946c82b8fa0468bc5e0201049c56, type: 2}
-  Response:
+  event: {fileID: 11400000, guid: 1858946c82b8fa0468bc5e0201049c56, type: 2}
+  response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8555765506018123969}
@@ -84,8 +84,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &3981476124672406823
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,46 +127,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7150ded84b9c144ebcd2cbdcb97f31e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HorizontalSinglePress:
-    UseVariable: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 56239085c6257194296c555c1e5680a6, type: 2}
-  HorizontalAxis:
-    UseVariable: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 20618bd901b63964292a5d369a4a41a1, type: 2}
-  NonHorizontalAxisEvent: {fileID: 11400000, guid: eb6a62e7e5694774e947359501a75ff2,
+  horizontalSinglePress:
+    useVariable: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 56239085c6257194296c555c1e5680a6, type: 2}
+  horizontalAxis:
+    useVariable: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 20618bd901b63964292a5d369a4a41a1, type: 2}
+  nonHorizontalAxisEvent: {fileID: 11400000, guid: eb6a62e7e5694774e947359501a75ff2,
     type: 2}
-  LeftButtonEvent: {fileID: 11400000, guid: 6c1ace6f5985c774cabd1fef3b78b71d, type: 2}
-  RightButtonEvent: {fileID: 11400000, guid: f9072b9b28da94a44bf5162da3ca5fe4, type: 2}
-  VerticalSinglePress:
-    UseVariable: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: bc750f52be36f124ea92cb5f18d5b6d4, type: 2}
-  VerticalAxis:
-    UseVariable: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 8aa016cf1cb2be64fa4ab51b69fd9642, type: 2}
-  UpButtonEvent: {fileID: 11400000, guid: c3f55849b88c10341bd160b5aeac7ec6, type: 2}
-  DownButtonEvent: {fileID: 11400000, guid: 3d7be2a9898f0fb4c8dbf85ec2459867, type: 2}
-  NonVerticalAxisEvent: {fileID: 11400000, guid: 5f9cf441191c92c44a5b5fdfb1ee67f3,
+  leftButtonEvent: {fileID: 11400000, guid: 6c1ace6f5985c774cabd1fef3b78b71d, type: 2}
+  rightButtonEvent: {fileID: 11400000, guid: f9072b9b28da94a44bf5162da3ca5fe4, type: 2}
+  verticalSinglePress:
+    useVariable: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: bc750f52be36f124ea92cb5f18d5b6d4, type: 2}
+  verticalAxis:
+    useVariable: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 8aa016cf1cb2be64fa4ab51b69fd9642, type: 2}
+  upButtonEvent: {fileID: 11400000, guid: c3f55849b88c10341bd160b5aeac7ec6, type: 2}
+  downButtonEvent: {fileID: 11400000, guid: 3d7be2a9898f0fb4c8dbf85ec2459867, type: 2}
+  nonVerticalAxisEvent: {fileID: 11400000, guid: 5f9cf441191c92c44a5b5fdfb1ee67f3,
     type: 2}
-  MaxSwipeTime:
-    UseVariable: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 3206dc5dacd619346a38e9b0caee969a, type: 2}
-  MinSwipeDistance:
-    UseVariable: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: c9b018d6fcbaa0f4b916d797936b22c9, type: 2}
-  StartButtonEvent: {fileID: 11400000, guid: cc1fb3491f60c914abf70d15a244d3e2, type: 2}
-  SquareButtonEvent: {fileID: 11400000, guid: bdff2087299eb204aaa98196d178e0cd, type: 2}
-  XButtonEvent: {fileID: 11400000, guid: 9d8c3c5206346104d9a1dee5ceaab4d5, type: 2}
-  UIPanelActive:
-    UseVariable: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: a7505b3a57d1fae4592917e01ab8a597, type: 2}
-  UIChangeEvent: {fileID: 11400000, guid: 2b1681e598f0fdd4d9e3e74eca1acbf6, type: 2}
+  maxSwipeTime:
+    useVariable: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 3206dc5dacd619346a38e9b0caee969a, type: 2}
+  minSwipeDistance:
+    useVariable: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: c9b018d6fcbaa0f4b916d797936b22c9, type: 2}
+  startButtonEvent: {fileID: 11400000, guid: cc1fb3491f60c914abf70d15a244d3e2, type: 2}
+  squareButtonEvent: {fileID: 11400000, guid: bdff2087299eb204aaa98196d178e0cd, type: 2}
+  xButtonEvent: {fileID: 11400000, guid: 9d8c3c5206346104d9a1dee5ceaab4d5, type: 2}
+  uiPanelActive:
+    useVariable: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: a7505b3a57d1fae4592917e01ab8a597, type: 2}
+  uiChangeEvent: {fileID: 11400000, guid: 2b1681e598f0fdd4d9e3e74eca1acbf6, type: 2}
 --- !u!1 &4106611574187238950
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,14 +501,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7fe741871c35941bbcfbc3a1a2355a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicVolume:
-    UseVariable: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 7b0485a8dac1c954992ddc69aae2c197, type: 2}
-  SFXVolume:
-    UseVariable: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 8b88a5e7f5eb0e043b6c4409ae629072, type: 2}
+  musicVolume:
+    useVariable: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 7b0485a8dac1c954992ddc69aae2c197, type: 2}
+  sfxVolume:
+    useVariable: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 8b88a5e7f5eb0e043b6c4409ae629072, type: 2}
   musicPlayer: {fileID: 8431537509646437278}
   sfxPlayer: {fileID: 9213244777541306550}
 --- !u!114 &6240870281215887533
@@ -525,8 +523,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a18e8d76b6b3f54f94b92fae64ef79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 78c13ef9ca938704f83112dbed986ad9, type: 2}
-  Response:
+  event: {fileID: 11400000, guid: 78c13ef9ca938704f83112dbed986ad9, type: 2}
+  response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6563887454675994691}
@@ -540,8 +538,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &8129048215599985842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,12 +550,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a18e8d76b6b3f54f94b92fae64ef79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: f28159685d3833c49b0916ffcb2c3d29, type: 2}
-  Response:
+  event: {fileID: 11400000, guid: f28159685d3833c49b0916ffcb2c3d29, type: 2}
+  response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6563887454675994691}
-        m_MethodName: SFXVolumeRefreshed
+        m_MethodName: SfxVolumeRefreshed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -569,5 +565,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null

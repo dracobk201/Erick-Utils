@@ -1,32 +1,36 @@
-﻿using UnityEngine;
+﻿using Basic_Variables;
+using UnityEngine;
 
-public class AudioHandler : MonoBehaviour
+namespace Utils
 {
-    #region Audio Variables
-    [Header("Audio Variables")]
-    [Tooltip("Volume for the Music")]
-    [SerializeField] private FloatReference MusicVolume;
-    [Tooltip("Volume for the SFX")]
-    [SerializeField] private FloatReference SFXVolume;
-    [Tooltip("Music Audio Source")]
-    [SerializeField] AudioSource musicPlayer;
-    [Tooltip("SFX Audio Source")]
-    [SerializeField] AudioSource sfxPlayer;
-    #endregion
-
-    private void Start()
+    public class AudioHandler : MonoBehaviour
     {
-        musicPlayer.volume = MusicVolume.Value;
-        sfxPlayer.volume = SFXVolume.Value;
-    }
+        #region Audio Variables
+        [Header("Audio Variables")]
+        [Tooltip("Volume for the Music")]
+        [SerializeField] private FloatReference musicVolume;
+        [Tooltip("Volume for the SFX")]
+        [SerializeField] private FloatReference sfxVolume;
+        [Tooltip("Music Audio Source")]
+        [SerializeField] AudioSource musicPlayer;
+        [Tooltip("SFX Audio Source")]
+        [SerializeField] AudioSource sfxPlayer;
+        #endregion
 
-    public void MusicVolumeRefreshed()
-    {
-        musicPlayer.volume = MusicVolume.Value;
-    }
+        private void Start()
+        {
+            musicPlayer.volume = musicVolume.Value;
+            sfxPlayer.volume = sfxVolume.Value;
+        }
 
-    public void SFXVolumeRefreshed()
-    {
-        sfxPlayer.volume = SFXVolume.Value;
+        public void MusicVolumeRefreshed()
+        {
+            musicPlayer.volume = musicVolume.Value;
+        }
+
+        public void SfxVolumeRefreshed()
+        {
+            sfxPlayer.volume = sfxVolume.Value;
+        }
     }
 }

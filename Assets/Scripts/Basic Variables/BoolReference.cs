@@ -1,16 +1,18 @@
 ﻿using System;
 
-[Serializable]
-public class BoolReference
+namespace Basic_Variables
 {
-    public bool UseVariable = true;
-    public bool ConstantValue;
-    public BoolVariable Variable;
-
-    public bool Value
+    [Serializable]
+    public class BoolReference
     {
-        get { return UseVariable ? Variable.Value : ConstantValue; }
-        set { Variable.Value = value; }
-    }
+        public bool useVariable = true;
+        public bool constantValue;
+        public BoolVariable variable;
 
+        public bool Value
+        {
+            get => useVariable ? variable.value : constantValue;
+            set => variable.value = value;
+        }
+    }
 }

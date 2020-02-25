@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Basic Variable/String")]
-public class StringVariable : ScriptableObject
+namespace Basic_Variables
 {
-    public string Value;
-    [TextArea]
-    public string Description;
-
-    public void SetValue(string value)
+    [CreateAssetMenu(menuName = "Basic Variable/String")]
+    public class StringVariable : ScriptableObject
     {
-        Value = value;
+        public string value;
+        [TextArea] public string description;
+
+        public void SetValue(string newValue)
+        {
+            value = newValue;
+        }
     }
 }

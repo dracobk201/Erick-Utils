@@ -1,25 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Basic_Variables;
+using Events;
 using UnityEngine;
+using Utils;
 
-public class MainMenuActions : MonoBehaviour
+namespace Main_Menu
 {
-    [Header("Data Variables")]
-    [SerializeField] private StringReference SceneToChange;
-    [SerializeField] private GameEvent ChangeSceneEvent;
-
-    public void StartLevel()
+    public class MainMenuActions : MonoBehaviour
     {
-        SceneToChange.Value = Global.FIRSTLEVELSCENE;
-        ChangeSceneEvent.Raise();
-    }
+        [Header("Data Variables")]
+        [SerializeField] private StringReference sceneToChange;
+        [SerializeField] private GameEvent changeSceneEvent;
 
-    public void QuitGame()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        public void StartLevel()
+        {
+            sceneToChange.Value = Global.FirstLevelScene;
+            changeSceneEvent.Raise();
+        }
+
+        public void QuitGame()
+        {
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #else
+            Application.Quit();
+            #endif
+        }
     }
 }

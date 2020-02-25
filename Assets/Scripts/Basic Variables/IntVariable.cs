@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
-[CreateAssetMenu(menuName = "Basic Variable/Int")]
-public class IntVariable : ScriptableObject
+namespace Basic_Variables
 {
-    public int Value;
-    [TextArea]
-    public string Description;
-
-    public void SetValue(int value)
+    [CreateAssetMenu(menuName = "Basic Variable/Int")]
+    public class IntVariable : ScriptableObject
     {
-        Value = value;
+        public int value;
+        [TextArea] public string description;
+
+        public void SetValue(int newValue)
+        {
+            value = newValue;
+        }
     }
 }

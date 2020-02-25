@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Basic Variable/Float")]
-public class FloatVariable : ScriptableObject
+namespace Basic_Variables
 {
-    public float Value;
-    [TextArea]
-    public string Description;
-
-    public void SetValue(float value)
+    [CreateAssetMenu(menuName = "Basic Variable/Float")]
+    public class FloatVariable : ScriptableObject
     {
-        Value = value;
+        public float value;
+        [TextArea] public string description;
+
+        public void SetValue(float newValue)
+        {
+            value = newValue;
+        }
     }
 }

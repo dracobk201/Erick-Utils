@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class LoadingBehaviour : MonoBehaviour
+namespace Main_Menu
 {
-    [Header("Script Variables")]
-    public GameObject loadingPanel;
-    private bool isShowing;
-
-    public void ShowingLoading()
+    public class LoadingBehaviour : MonoBehaviour
     {
-        isShowing = !isShowing;
-        loadingPanel.SetActive(isShowing);
+        [Header("Script Variables")]
+        [SerializeField] private GameObject loadingPanel;
+        private bool isShowing;
+
+        public void ShowingLoading()
+        {
+            isShowing = !isShowing;
+            loadingPanel.SetActive(isShowing);
+        }
     }
 }

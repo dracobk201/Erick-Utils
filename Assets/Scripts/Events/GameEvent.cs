@@ -1,35 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class GameEvent : ScriptableObject
+namespace Events
 {
-    private List<GameEventListener> listeners = new List<GameEventListener>();
-    [TextArea]
-    public string Description;
-
-    public void Raise()
+    [CreateAssetMenu]
+    public class GameEvent : ScriptableObject
     {
-        for (int i = listeners.Count-1; i >= 0; i--)
+        private readonly List<GameEventListener> listeners = new List<GameEventListener>();
+        [TextArea] public string description;
+
+        public void Raise()
         {
-            listeners[i].OnEventRaised();
+            for (var i = listeners.Count-1; i >= 0; i--)
+                listeners[i].OnEventRaised();
         }
-    }
 
-    public void RegisterListener(GameEventListener listener)
-    {
-        if (!listeners.Contains(listener))
+        public void RegisterListener(GameEventListener listener)
         {
-            listeners.Add(listener);
+            if (!listeners.Contains(listener))
+                listeners.Add(listener);
         }
-    }
 
-    public void UnregisterListener(GameEventListener listener)
-    {
-        if (listeners.Contains(listener))
+        public void UnregisterListener(GameEventListener listener)
         {
-            listeners.Remove(listener);
+            if (listeners.Contains(listener))
+                listeners.Remove(listener);
         }
     }
 }

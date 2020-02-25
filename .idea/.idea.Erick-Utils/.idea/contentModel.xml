@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Margarita\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Margarita\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Erick-Utils.1616439813.00" t="ExcludeRecursive" />
+    <e p="G:\Documents\GameProjects\Erick-Utils" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Basic Variables" t="Include">
+            <e p="BoolReference.cs" t="Include" />
+            <e p="BoolVariable.cs" t="Include" />
+            <e p="ColorReference.cs" t="Include" />
+            <e p="ColorVariable.cs" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="BoolReferenceDrawer.cs" t="Include" />
+              <e p="ColorReferenceDrawer.cs" t="Include" />
+              <e p="FloatReferenceDrawer.cs" t="Include" />
+              <e p="IntReferenceDrawer.cs" t="Include" />
+              <e p="StringReferenceDrawer.cs" t="Include" />
+              <e p="Vector3ReferenceDrawer.cs" t="Include" />
+            </e>
+            <e p="FloatReference.cs" t="Include" />
+            <e p="FloatVariable.cs" t="Include" />
+            <e p="IntReference.cs" t="Include" />
+            <e p="IntVariable.cs" t="Include" />
+            <e p="StringReference.cs" t="Include" />
+            <e p="StringVariable.cs" t="Include" />
+            <e p="Vector3Reference.cs" t="Include" />
+            <e p="Vector3Variable.cs" t="Include" />
+          </e>
+          <e p="Events" t="Include">
+            <e p="Editor" t="Include">
+              <e p="GameEventEditor.cs" t="Include" />
+            </e>
+            <e p="GameEvent.cs" t="Include" />
+            <e p="GameEventListener.cs" t="Include" />
+          </e>
+          <e p="GameCanvasActions.cs" t="Include" />
+          <e p="Main Menu" t="Include">
+            <e p="LoadingBehaviour.cs" t="Include" />
+            <e p="MainMenuActions.cs" t="Include" />
+            <e p="OptionsMainMenuActions.cs" t="Include" />
+          </e>
+          <e p="PauseActions.cs" t="Include" />
+          <e p="Utils" t="Include">
+            <e p="AudioHandler.cs" t="Include" />
+            <e p="CameraFollow.cs" t="Include" />
+            <e p="ControllerHandler.cs" t="Include" />
+            <e p="Global.cs" t="Include" />
+            <e p="SceneHandler.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Erick-Utils.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

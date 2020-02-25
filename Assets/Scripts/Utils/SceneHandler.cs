@@ -1,48 +1,45 @@
 ﻿using System.Collections;
+using Basic_Variables;
+using Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneHandler : MonoBehaviour
+namespace Utils
 {
-    [Header("Data Variables")]
-    [SerializeField]
-    private StringReference SceneToChange;
-    [SerializeField]
-    private FloatReference SceneChangeProgress;
-    [SerializeField]
-    private FloatReference SceneChangeDelay;
-    [SerializeField]
-    private GameEvent ShowSceneLoading;
-
-    private bool isChangingSceneNow;
-    private AsyncOperation sceneOperation;
-
-    public void SwitchScene()
+    public class SceneHandler : MonoBehaviour
     {
-        sceneOperation = SceneManager.LoadSceneAsync(SceneToChange.Value, LoadSceneMode.Single);
-        isChangingSceneNow = true;
-        sceneOperation.allowSceneActivation = false;
-        ShowSceneLoading.Raise();
-    }
+        [Header("Data Variables")]
+        [SerializeField] private StringReference sceneToChange;
+        [SerializeField] private FloatReference sceneChangeProgress;
+        [SerializeField] private FloatReference sceneChangeDelay;
+        [SerializeField] private GameEvent showSceneLoading;
 
-    private void Update()
-    {
-        if (isChangingSceneNow)
+        private bool isChangingSceneNow;
+        private AsyncOperation sceneOperation;
+
+        public void SwitchScene()
         {
-            SceneChangeProgress.Value = sceneOperation.progress;
-            if (sceneOperation.progress >= 0.9f)
-            {
-                isChangingSceneNow = false;
-                StartCoroutine(HideOldScene());
-            }
+            sceneOperation = SceneManager.LoadSceneAsync(sceneToChange.Value, LoadSceneMode.Single);
+            isChangingSceneNow = true;
+            sceneOperation.allowSceneActivation = false;
+            showSceneLoading.Raise();
         }
-    }
 
-    private IEnumerator HideOldScene()
-    {
-        yield return new WaitForSecondsRealtime(SceneChangeDelay.Value);
-        sceneOperation.allowSceneActivation = true;
-        //ShowSceneLoading.Raise();
-        sceneOperation = null;
+        private void Update()
+        {
+            if (!isChangingSceneNow) return;
+            sceneChangeProgress.Value = sceneOperation.progress;
+            if (!(sceneOperation.progress >= 0.9f)) return;
+            isChangingSceneNow = false;
+            StartCoroutine(HideOldScene());
+        }
+
+        private IEnumerator HideOldScene()
+        {
+            yield return new WaitForSecondsRealtime(sceneChangeDelay.Value);
+            sceneOperation.allowSceneActivation = true;
+            //ShowSceneLoading.Raise();
+            sceneOperation = null;
+        }
     }
 }

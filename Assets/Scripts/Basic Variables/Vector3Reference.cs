@@ -1,17 +1,19 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
-public class Vector3Reference
+namespace Basic_Variables
 {
-    public bool UseVariable = true;
-    public Vector3 ConstantValue;
-    public Vector3Variable Variable;
-
-    public Vector3 Value
+    [Serializable]
+    public class Vector3Reference
     {
-        get { return UseVariable ? Variable.Value : ConstantValue; }
-        set { Variable.Value = value; }
+        public bool useVariable = true;
+        public Vector3 constantValue;
+        public Vector3Variable variable;
+
+        public Vector3 Value
+        {
+            get => useVariable ? variable.value : constantValue;
+            set => variable.value = value;
+        }
     }
-   	
 }

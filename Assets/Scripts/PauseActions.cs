@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Basic_Variables;
+using Events;
 using UnityEngine;
+using Utils;
 
 public class PauseActions : MonoBehaviour
 {
     [Header("Data Variables")]
-    [SerializeField] private BoolReference GamePaused;
-    [SerializeField] private StringReference SceneToChange;
-    [SerializeField] private GameEvent ChangeSceneEvent;
+    [SerializeField] private BoolReference gamePaused;
+    [SerializeField] private StringReference sceneToChange;
+    [SerializeField] private GameEvent changeSceneEvent;
 
     [Header("Panel Variable")]
     [SerializeField] private GameObject pauseHolder;
@@ -21,23 +22,23 @@ public class PauseActions : MonoBehaviour
 
     private void Update()
     {
-        if (GamePaused.Value == lastTimeGamePaused)
+        if (gamePaused.Value == lastTimeGamePaused)
             return;
 
-        pauseHolder.SetActive(GamePaused.Value);
-        lastTimeGamePaused = GamePaused.Value;
+        pauseHolder.SetActive(gamePaused.Value);
+        lastTimeGamePaused = gamePaused.Value;
     }
 
     public void TriggerPause()
     {
-        GamePaused.Value = !GamePaused.Value;
-        Time.timeScale = (GamePaused.Value) ? 0 : 1;
+        gamePaused.Value = !gamePaused.Value;
+        Time.timeScale = (gamePaused.Value) ? 0 : 1;
     }
 
     public void TriggerPause(bool isPaused)
     {
-        GamePaused.Value = isPaused;
-        Time.timeScale = (GamePaused.Value) ? 0 : 1;
+        gamePaused.Value = isPaused;
+        Time.timeScale = (gamePaused.Value) ? 0 : 1;
     }
 
     public void ResumeButtonPressed()
@@ -47,8 +48,8 @@ public class PauseActions : MonoBehaviour
 
     public void RestartButtonPressed()
     {
-        SceneToChange.Value = Global.FIRSTLEVELSCENE;
-        ChangeSceneEvent.Raise();
+        sceneToChange.Value = Global.FirstLevelScene;
+        changeSceneEvent.Raise();
     }
 
     public void OptionsButtonPressed()
@@ -58,7 +59,7 @@ public class PauseActions : MonoBehaviour
 
     public void QuitButtonPressed()
     {
-        SceneToChange.Value = Global.MAINMENUSCENE;
-        ChangeSceneEvent.Raise();
+        sceneToChange.Value = Global.MainMenuScene;
+        changeSceneEvent.Raise();
     }
 }

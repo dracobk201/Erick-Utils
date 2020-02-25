@@ -1,17 +1,20 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
-public class ColorReference
+namespace Basic_Variables
 {
-    public bool UseVariable = true;
-    public Color ConstantValue;
-    public ColorVariable Variable;
-
-    public Color Value
+    [Serializable]
+    public class ColorReference
     {
-        get { return UseVariable ? Variable.Value : ConstantValue; }
-        set { Variable.Value = value; }
-    }
+        public bool useVariable = true;
+        public Color constantValue;
+        public ColorVariable variable;
+
+        public Color Value
+        {
+            get => useVariable ? variable.value : constantValue;
+            set => variable.value = value;
+        }
    	
+    }
 }

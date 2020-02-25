@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ee6d10ba-30c1-443e-8512-83d6bfd6706e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PauseActions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/AudioHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/SceneHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/ControllerHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/Global.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/CameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Events/GameEventListener.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Events/GameEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Events/Editor/GameEventEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main Menu/OptionsMainMenuActions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main Menu/MainMenuActions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Main Menu/LoadingBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/StringReference.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/Vector3Reference.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/IntReference.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/FloatVariable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/ColorVariable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/BoolReference.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/Vector3Variable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/FloatReference.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/StringVariable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/BoolVariable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/IntVariable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/ColorReference.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/Editor/BoolReferenceDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/Editor/StringReferenceDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameCanvasActions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/Editor/ColorReferenceDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/Editor/Vector3ReferenceDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/Editor/IntReferenceDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Data/Camera Settings/Camera Offset.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Basic Variables/Editor/FloatReferenceDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/Main Menu/LoadingBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/IntVariable.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/IntReference.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/BoolReference.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/BoolVariable.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/ColorReference.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/ColorVariable.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/FloatReference.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/FloatVariable.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/StringReference.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/StringVariable.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/Vector3Reference.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/Vector3Variable.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Events/Editor/GameEventEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Events/GameEvent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Events/GameEventListener.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Main Menu/MainMenuActions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Main Menu/OptionsMainMenuActions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Utils/AudioHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Utils/CameraFollow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Utils/ControllerHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Utils/Global.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Utils/SceneHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameplayCanvasActions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCanvasActions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PauseActions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/Editor/BoolReferenceDrawer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/Editor/ColorReferenceDrawer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/Editor/FloatReferenceDrawer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/Editor/IntReferenceDrawer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/Editor/StringReferenceDrawer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Basic Variables/Editor/Vector3ReferenceDrawer.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1YHN6blVi8skmf2FDxAcvSG4Taj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="Rider.SolutionExplorerActivator" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TWShift.3" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ee6d10ba-30c1-443e-8512-83d6bfd6706e" name="Default Changelist" comment="" />
+      <created>1582595385110</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582595385110</updated>
+      <workItem from="1582595386974" duration="4873000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+</project>

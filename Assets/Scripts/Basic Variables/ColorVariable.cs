@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Basic Variable/Color")]
-public class ColorVariable : ScriptableObject
+namespace Basic_Variables
 {
-    public Color Value;
-    [TextArea]
-    public string Description;
-
-    public void SetValue(Color value)
+    [CreateAssetMenu(menuName = "Basic Variable/Color")]
+    public class ColorVariable : ScriptableObject
     {
-        Value = value;
+        public Color value;
+        [TextArea] public string description;
+
+        public void SetValue(Color newValue)
+        {
+            value = newValue;
+        }
     }
 }
