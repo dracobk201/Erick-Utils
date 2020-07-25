@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6afd874ab16a4474a989d8ef494fad3c, type: 3}
-  m_Name: Non Vertical Axis
+  m_Script: {fileID: 11500000, guid: ce46ac497e6127142a66589c081dbcb0, type: 3}
+  m_Name: Movement Axis
   m_EditorClassIdentifier: 
-  Description: 
+  value: {x: 0, y: 0}
+  description: 

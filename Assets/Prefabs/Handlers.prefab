@@ -74,6 +74,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8555765506018123969}
+        m_TargetAssemblyTypeName: 
         m_MethodName: SwitchScene
         m_Mode: 1
         m_Arguments:
@@ -127,38 +128,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7150ded84b9c144ebcd2cbdcb97f31e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSinglePress:
+  movementAxis:
     useVariable: 1
-    constantValue: 0
-    variable: {fileID: 11400000, guid: 56239085c6257194296c555c1e5680a6, type: 2}
-  horizontalAxis:
+    constantValue: {x: 0, y: 0}
+    variable: {fileID: 11400000, guid: 21021f17c645c2542a9a1704c20de344, type: 2}
+  cameraAxis:
     useVariable: 1
-    constantValue: 0
-    variable: {fileID: 11400000, guid: 20618bd901b63964292a5d369a4a41a1, type: 2}
-  nonHorizontalAxisEvent: {fileID: 11400000, guid: eb6a62e7e5694774e947359501a75ff2,
+    constantValue: {x: 0, y: 0}
+    variable: {fileID: 11400000, guid: 862f2b9d970db0047a3e4bffc1aa035a, type: 2}
+  movementAxisPerformed: {fileID: 11400000, guid: af1dc32aee2031c419f26a1378895137,
     type: 2}
-  leftButtonEvent: {fileID: 11400000, guid: 6c1ace6f5985c774cabd1fef3b78b71d, type: 2}
-  rightButtonEvent: {fileID: 11400000, guid: f9072b9b28da94a44bf5162da3ca5fe4, type: 2}
-  verticalSinglePress:
-    useVariable: 1
-    constantValue: 0
-    variable: {fileID: 11400000, guid: bc750f52be36f124ea92cb5f18d5b6d4, type: 2}
-  verticalAxis:
-    useVariable: 1
-    constantValue: 0
-    variable: {fileID: 11400000, guid: 8aa016cf1cb2be64fa4ab51b69fd9642, type: 2}
-  upButtonEvent: {fileID: 11400000, guid: c3f55849b88c10341bd160b5aeac7ec6, type: 2}
-  downButtonEvent: {fileID: 11400000, guid: 3d7be2a9898f0fb4c8dbf85ec2459867, type: 2}
-  nonVerticalAxisEvent: {fileID: 11400000, guid: 5f9cf441191c92c44a5b5fdfb1ee67f3,
+  movementAxisCanceled: {fileID: 11400000, guid: cf1cec32cfe481b4eb53b7c90e9b46d6,
     type: 2}
-  maxSwipeTime:
-    useVariable: 1
-    constantValue: 0
-    variable: {fileID: 11400000, guid: 3206dc5dacd619346a38e9b0caee969a, type: 2}
-  minSwipeDistance:
-    useVariable: 1
-    constantValue: 0
-    variable: {fileID: 11400000, guid: c9b018d6fcbaa0f4b916d797936b22c9, type: 2}
+  cameraAxisPerformed: {fileID: 11400000, guid: fac0bfab9e2867b4ea4f3f40e448bfb2,
+    type: 2}
+  cameraAxisCanceled: {fileID: 11400000, guid: ded3eca766551614a98e69fc05eb1293, type: 2}
   startButtonEvent: {fileID: 11400000, guid: cc1fb3491f60c914abf70d15a244d3e2, type: 2}
   squareButtonEvent: {fileID: 11400000, guid: bdff2087299eb204aaa98196d178e0cd, type: 2}
   xButtonEvent: {fileID: 11400000, guid: 9d8c3c5206346104d9a1dee5ceaab4d5, type: 2}
@@ -509,8 +493,8 @@ MonoBehaviour:
     useVariable: 1
     constantValue: 0
     variable: {fileID: 11400000, guid: 8b88a5e7f5eb0e043b6c4409ae629072, type: 2}
-  musicPlayer: {fileID: 8431537509646437278}
-  sfxPlayer: {fileID: 9213244777541306550}
+  bgmAudioSource: {fileID: 0}
+  sfxAudioSource: {fileID: 0}
 --- !u!114 &6240870281215887533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +512,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6563887454675994691}
+        m_TargetAssemblyTypeName: 
         m_MethodName: MusicVolumeRefreshed
         m_Mode: 1
         m_Arguments:
@@ -555,6 +540,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6563887454675994691}
+        m_TargetAssemblyTypeName: 
         m_MethodName: SfxVolumeRefreshed
         m_Mode: 1
         m_Arguments:

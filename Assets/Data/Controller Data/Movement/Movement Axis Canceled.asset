@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0224c4e955acd93489bd88e4aefbc935, type: 3}
-  m_Name: Max Swipe Time
+  m_Script: {fileID: 11500000, guid: 6afd874ab16a4474a989d8ef494fad3c, type: 3}
+  m_Name: Movement Axis Canceled
   m_EditorClassIdentifier: 
-  Value: 5
-  Description: "Tiempo m\xE1ximo para tomar un Swipe como v\xE1lido."
+  description: 
