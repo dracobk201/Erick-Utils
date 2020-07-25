@@ -1,19 +1,15 @@
 ﻿using System;
 
-namespace Basic_Variables
+[Serializable]
+public class StringReference
 {
-    [Serializable]
-    public class StringReference
+    public bool useVariable = true;
+    public string constantValue;
+    public StringVariable variable;
+
+    public string Value
     {
-        public bool useVariable = true;
-        public string constantValue;
-        public StringVariable variable;
-
-        public string Value
-        {
-            get => useVariable ? variable.value : constantValue;
-            set => variable.value = value;
-        }
-
+        get => useVariable ? variable.value : constantValue;
+        set => variable.value = value;
     }
 }

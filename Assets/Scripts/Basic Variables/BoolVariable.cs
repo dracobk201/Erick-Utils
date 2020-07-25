@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
 
-namespace Basic_Variables
+[CreateAssetMenu(menuName = "Basic Variable/Bool")]
+public class BoolVariable : ScriptableObject
 {
-    [CreateAssetMenu(menuName = "Basic Variable/Bool")]
-    public class BoolVariable : ScriptableObject
-    {
-        public bool value;
-        [TextArea] public string description;
+    public bool value;
+    [TextArea] public string description;
 
-        public void SetValue(bool newValue)
-        {
-            value = newValue;
-        }
+    public void SetValue(bool newValue)
+    {
+        value = newValue;
     }
 }

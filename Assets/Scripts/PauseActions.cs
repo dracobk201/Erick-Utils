@@ -1,32 +1,29 @@
-﻿using Basic_Variables;
-using Events;
-using UnityEngine;
-using Utils;
+﻿using UnityEngine;
 
 public class PauseActions : MonoBehaviour
 {
     [Header("Data Variables")]
-    [SerializeField] private BoolReference gamePaused;
-    [SerializeField] private StringReference sceneToChange;
-    [SerializeField] private GameEvent changeSceneEvent;
+    [SerializeField] private BoolReference gamePaused = null;
+    [SerializeField] private StringReference sceneToChange = null;
 
     [Header("Panel Variable")]
-    [SerializeField] private GameObject pauseHolder;
+    [SerializeField] private GameObject pauseHolder = null;
 
-    private bool lastTimeGamePaused;
+    private bool _lastTimeGamePaused;
 
     private void Start()
     {
-        TriggerPause(false);
+        gamePaused.Value = false;
+        Time.timeScale = 1;
     }
 
     private void Update()
     {
-        if (gamePaused.Value == lastTimeGamePaused)
+        if (gamePaused.Value == _lastTimeGamePaused)
             return;
 
         pauseHolder.SetActive(gamePaused.Value);
-        lastTimeGamePaused = gamePaused.Value;
+        _lastTimeGamePaused = gamePaused.Value;
     }
 
     public void TriggerPause()
@@ -49,7 +46,6 @@ public class PauseActions : MonoBehaviour
     public void RestartButtonPressed()
     {
         sceneToChange.Value = Global.FirstLevelScene;
-        changeSceneEvent.Raise();
     }
 
     public void OptionsButtonPressed()
@@ -60,6 +56,5 @@ public class PauseActions : MonoBehaviour
     public void QuitButtonPressed()
     {
         sceneToChange.Value = Global.MainMenuScene;
-        changeSceneEvent.Raise();
     }
 }

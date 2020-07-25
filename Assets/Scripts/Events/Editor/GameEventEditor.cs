@@ -1,20 +1,16 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Events.Editor
+[CustomEditor(typeof(GameEvent))]
+public class GameEventEditor : Editor
 {
-    [CustomEditor(typeof(GameEvent))]
-    public class GameEventEditor : UnityEditor.Editor
+    public override void OnInspectorGUI()
     {
-        public override void OnInspectorGUI()
-        {
-            base.OnInspectorGUI();
+        base.OnInspectorGUI();
+        GUI.enabled = Application.isPlaying;
 
-            GUI.enabled = Application.isPlaying;
-
-            var e = target as GameEvent;
-            if (GUILayout.Button("Raise"))
-                e.Raise();
-        }
+        var e = target as GameEvent;
+        if (GUILayout.Button("Raise"))
+            e.Raise();
     }
 }

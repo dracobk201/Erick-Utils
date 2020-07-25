@@ -1,19 +1,15 @@
 ﻿using System;
 
-namespace Basic_Variables
+[Serializable]
+public class FloatReference
 {
-    [Serializable]
-    public class FloatReference
-    {
-        public bool useVariable = true;
-        public float constantValue;
-        public FloatVariable variable;
+    public bool useVariable = true;
+    public float constantValue;
+    public FloatVariable variable;
 
-        public float Value
-        {
-            get => useVariable ? variable.value : constantValue;
-            set => variable.value = value;
-        }
-   	
+    public float Value
+    {
+        get => useVariable ? variable.value : constantValue;
+        set => variable.value = value;
     }
 }

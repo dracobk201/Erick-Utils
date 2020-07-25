@@ -1,36 +1,49 @@
-﻿using Basic_Variables;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Utils
+public class AudioHandler : MonoBehaviour
 {
-    public class AudioHandler : MonoBehaviour
+    #region Audio Variables
+    [Header("Audio Variables")]
+    [SerializeField] private FloatReference musicVolume = null;
+    [SerializeField] private FloatReference sfxVolume = null;
+    [SerializeField] private AudioSource bgmAudioSource = null;
+    [SerializeField] private AudioSource sfxAudioSource = null;
+    #endregion
+
+    private void Start()
     {
-        #region Audio Variables
-        [Header("Audio Variables")]
-        [Tooltip("Volume for the Music")]
-        [SerializeField] private FloatReference musicVolume;
-        [Tooltip("Volume for the SFX")]
-        [SerializeField] private FloatReference sfxVolume;
-        [Tooltip("Music Audio Source")]
-        [SerializeField] AudioSource musicPlayer;
-        [Tooltip("SFX Audio Source")]
-        [SerializeField] AudioSource sfxPlayer;
-        #endregion
+        bgmAudioSource.volume = musicVolume.Value;
+        sfxAudioSource.volume = sfxVolume.Value;
+    }
 
-        private void Start()
+    public void MusicVolumeRefreshed()
+    {
+        bgmAudioSource.volume = musicVolume.Value;
+    }
+
+    public void SFXVolumeRefreshed()
+    {
+        sfxAudioSource.volume = sfxVolume.Value;
+    }
+
+    public void PlayAudio(Audio targetAudio)
+    {
+        AudioSource source = null;
+        switch (targetAudio.type)
         {
-            musicPlayer.volume = musicVolume.Value;
-            sfxPlayer.volume = sfxVolume.Value;
+            case AudioType.BGM:
+                source = bgmAudioSource;
+                break;
+            case AudioType.SFX:
+                source = sfxAudioSource;
+                break;
+            default:
+            case AudioType.None:
+                return;
         }
 
-        public void MusicVolumeRefreshed()
-        {
-            musicPlayer.volume = musicVolume.Value;
-        }
-
-        public void SfxVolumeRefreshed()
-        {
-            sfxPlayer.volume = sfxVolume.Value;
-        }
+        source.clip = targetAudio.clip;
+        source.loop = targetAudio.canLoop;
+        source.Play();
     }
 }

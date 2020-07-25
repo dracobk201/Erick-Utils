@@ -1,54 +1,51 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Basic_Variables.Editor
+[CustomPropertyDrawer(typeof(Vector3Reference))]
+public class Vector3ReferenceDrawer : PropertyDrawer
 {
-    [CustomPropertyDrawer(typeof(Vector3Reference))]
-    public class Vector3ReferenceDrawer : PropertyDrawer
+    private int selected;
+
+    private void OnEnable()
     {
-        private int selected;
+        selected = 0;
+    }
 
-        private void OnEnable()
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        EditorGUI.BeginProperty(position, label, property);
+
+        position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
+
+        var indent = EditorGUI.indentLevel;
+        EditorGUI.indentLevel = 0;
+
+        var popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions")) {imagePosition = ImagePosition.ImageOnly};
+
+        var buttonRect = new Rect(position);
+        buttonRect.yMin += popupStyle.margin.top;
+        buttonRect.width = popupStyle.fixedWidth + popupStyle.margin.right;
+        position.xMin = buttonRect.xMax;
+
+        var options = new string[]
         {
-            selected = 0;
+            "Var", "Cons"
+        };
+
+        selected = EditorGUI.Popup(buttonRect, selected, options, popupStyle);
+
+        if (selected == 0)
+        {
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("variable"), GUIContent.none);
+            property.FindPropertyRelative("useVariable").boolValue = true;
+        }
+        else
+        {
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("cnstantValue"), GUIContent.none);
+            property.FindPropertyRelative("useVariable").boolValue = false;
         }
 
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-        {
-            EditorGUI.BeginProperty(position, label, property);
-
-            position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
-
-            var indent = EditorGUI.indentLevel;
-            EditorGUI.indentLevel = 0;
-
-            var popupStyle = new GUIStyle(GUI.skin.GetStyle("PaneOptions")) {imagePosition = ImagePosition.ImageOnly};
-
-            var buttonRect = new Rect(position);
-            buttonRect.yMin += popupStyle.margin.top;
-            buttonRect.width = popupStyle.fixedWidth + popupStyle.margin.right;
-            position.xMin = buttonRect.xMax;
-
-            var options = new string[]
-            {
-                "Var", "Cons"
-            };
-
-            selected = EditorGUI.Popup(buttonRect, selected, options, popupStyle);
-
-            if (selected == 0)
-            {
-                EditorGUI.PropertyField(position, property.FindPropertyRelative("variable"), GUIContent.none);
-                property.FindPropertyRelative("useVariable").boolValue = true;
-            }
-            else
-            {
-                EditorGUI.PropertyField(position, property.FindPropertyRelative("cnstantValue"), GUIContent.none);
-                property.FindPropertyRelative("useVariable").boolValue = false;
-            }
-
-            EditorGUI.indentLevel = indent;
-            EditorGUI.EndProperty();
-        }
+        EditorGUI.indentLevel = indent;
+        EditorGUI.EndProperty();
     }
 }

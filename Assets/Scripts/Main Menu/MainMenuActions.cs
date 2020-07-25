@@ -1,29 +1,34 @@
-﻿using Basic_Variables;
-using Events;
-using UnityEngine;
-using Utils;
+﻿using UnityEngine;
 
-namespace Main_Menu
+public class MainMenuActions : MonoBehaviour
 {
-    public class MainMenuActions : MonoBehaviour
+    [Header("Data Variables")]
+    [SerializeField] private StringReference sceneToChange = null;
+    [SerializeField] private GameEvent changeSceneEvent = null;
+    [SerializeField] private GameEvent playMainMenuMusic = null;
+
+    private void Start()
     {
-        [Header("Data Variables")]
-        [SerializeField] private StringReference sceneToChange;
-        [SerializeField] private GameEvent changeSceneEvent;
+        InitializeData();
+    }
 
-        public void StartLevel()
-        {
-            sceneToChange.Value = Global.FirstLevelScene;
-            changeSceneEvent.Raise();
-        }
+    private void InitializeData()
+    {
+        playMainMenuMusic.Raise();
+    }
 
-        public void QuitGame()
-        {
-            #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-            #else
-            Application.Quit();
-            #endif
-        }
+    public void StartLevel()
+    {
+        sceneToChange.Value = Global.FirstLevelScene;
+        changeSceneEvent.Raise();
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
